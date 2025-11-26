@@ -1,6 +1,6 @@
 {
   "name": "dynamic-react-icon",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "A dynamic React component for rendering react-icons dynamically based on icon name",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -21,10 +21,10 @@
     "typescript",
     "component"
   ],
-  "author": "",
+  "author": "Daniel Carlos",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-icons": "^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
@@ -35,10 +35,10 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/daniel-carlos/DynamicReactIcon"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/daniel-carlos/DynamicReactIcon/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/daniel-carlos/DynamicReactIcon#readme"
 }

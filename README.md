@@ -1,47 +1,75 @@
 # Dynamic React Icon
 
-A lightweight and type-safe React component for dynamically rendering icons from [react-icons](https://react-icons.github.io/react-icons/) based on icon names.
+[![npm version](https://img.shields.io/npm/v/dynamic-react-icon.svg)](https://www.npmjs.com/package/dynamic-react-icon)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Features
+A dynamic React component for rendering [react-icons](https://react-icons.github.io/react-icons/) dynamically based on icon name strings. Perfect for scenarios where you need to render icons from database values, API responses, or user input.
 
-- ✅ **Type-safe**: Full TypeScript support with autocomplete for all available icon names
-- 🎯 **Dynamic**: Render icons dynamically based on string names
-- 📦 **Lightweight**: No extra dependencies beyond React and react-icons
-- 🔧 **Flexible**: Supports all react-icons props (size, color, className, style, etc.)
-- 🚀 **Tree-shakable**: Only imports the icon libraries you use
+## ✨ Features
 
-## Supported Icon Libraries
+- 🎯 **Type-Safe**: Full TypeScript support with autocomplete for all icon names
+- 🔄 **Dynamic Rendering**: Render icons based on string values
+- 📦 **Multiple Icon Libraries**: Supports 8+ icon libraries from react-icons
+- 🎨 **Fully Customizable**: All react-icons props supported (size, color, className, etc.)
+- 🛡️ **Error Handling**: Graceful fallback for invalid icon names
+- ⚛️ **React 16.8+**: Compatible with React 16.8, 17, 18, and 19
 
-- Font Awesome (`Fa`)
-- Material Design (`Md`)
-- Ant Design (`Ai`)
-- Bootstrap (`Bs`, `Bi`)
-- Feather (`Fi`)
-- Ionicons (`Io`)
-- Remix Icon (`Ri`)
+## 🎨 Supported Icon Libraries
 
-## Installation
+The component supports **30+ icon libraries** from react-icons:
+
+| Prefix | Library | Example |
+|--------|---------|---------|
+| `Fa` | Font Awesome 5 | `FaBeer`, `FaReact`, `FaGithub` |
+| `Fa6` | Font Awesome 6 | `Fa6React`, `Fa6Github` |
+| `Md` | Material Design | `MdHome`, `MdSettings`, `MdSearch` |
+| `Ai` | Ant Design | `AiOutlineUser`, `AiOutlineHeart` |
+| `Bi` | Bootstrap Icons | `BiUser`, `BiHome` |
+| `Bs` | Bootstrap Icons | `BsHeart`, `BsGithub` |
+| `Cg` | css.gg | `CgProfile`, `CgSearch` |
+| `Di` | Devicons | `DiReact`, `DiJavascript` |
+| `Fi` | Feather | `FiSettings`, `FiUser` |
+| `Fc` | Flat Color Icons | `FcLinux`, `FcAndroidOs` |
+| `Gi` | Game Icons | `GiArcher`, `GiDragonfly` |
+| `Go` | Github Octicons | `GoRepo`, `GoGist` |
+| `Gr` | Grommet Icons | `GrAdd`, `GrCircleInformation` |
+| `Hi` | Heroicons 1 | `HiHome`, `HiUser` |
+| `Hi2` | Heroicons 2 | `Hi2Home`, `Hi2User` |
+| `Im` | IcoMoon Free | `ImHome`, `ImUser` |
+| `Io` | Ionicons 5 | `IoHome`, `IoSettings` |
+| `Io4` | Ionicons 4 | `Io4IosHome`, `Io4MdHome` |
+| `Lia` | Icons8 Line Awesome | `LiaHomeSolid`, `LiaUserSolid` |
+| `Lu` | Lucide | `LuHome`, `LuUser` |
+| `Pi` | Phosphor Icons | `PiHouse`, `PiUser` |
+| `Ri` | Remix Icons | `RiHome2Line`, `RiUserLine` |
+| `Rx` | Radix Icons | `RxHome`, `RxAvatar` |
+| `Si` | Simple Icons | `SiReact`, `SiTypescript` |
+| `Sl` | Simple Line Icons | `SlHome`, `SlUser` |
+| `Tb` | Tabler Icons | `TbHome`, `TbUser` |
+| `Tfi` | Themify Icons | `TfiHome`, `TfiUser` |
+| `Ti` | Typicons | `TiHome`, `TiUser` |
+| `Vsc` | VS Code Icons | `VscHome`, `VscAccount` |
+| `Wi` | Weather Icons | `WiDaySunny`, `WiNightClear` |
+
+[Browse all available icons →](https://react-icons.github.io/react-icons/)
+
+## 📦 Installation
 
 ```bash
-npm install dynamic-react-icon
+npm install dynamic-react-icon react-icons
 ```
-
-Or with yarn:
 
 ```bash
-yarn add dynamic-react-icon
+yarn add dynamic-react-icon react-icons
 ```
-
-**Peer Dependencies:**
-This package requires `react` and `react-icons` to be installed:
 
 ```bash
-npm install react react-icons
+pnpm add dynamic-react-icon react-icons
 ```
 
-## Usage
+## 🚀 Quick Start
 
-### Basic Example
+### Basic Usage
 
 ```tsx
 import { DynamicReactIcon } from 'dynamic-react-icon';
@@ -49,104 +77,238 @@ import { DynamicReactIcon } from 'dynamic-react-icon';
 function App() {
   return (
     <div>
-      <DynamicReactIcon iconName="FaBeer" size={24} color="blue" />
+      <DynamicReactIcon iconName="FaBeer" />
       <DynamicReactIcon iconName="MdHome" size={32} />
-      <DynamicReactIcon iconName="AiOutlineUser" className="text-red-500" />
+      <DynamicReactIcon iconName="AiOutlineUser" color="blue" />
     </div>
   );
 }
 ```
 
-### With Custom Styling
+### With Props
 
 ```tsx
 <DynamicReactIcon 
-  iconName="FaHeart" 
-  size={48} 
-  color="#ff0000"
+  iconName="FaReact" 
+  size={48}
+  color="#61dafb"
+  className="my-icon-class"
   style={{ marginRight: '10px' }}
-  className="custom-icon-class"
 />
 ```
 
-### Dynamic Icon Selection
+### Dynamic from Data
 
 ```tsx
-function IconSelector({ iconName }) {
-  return <DynamicReactIcon iconName={iconName} size={30} />;
+function IconList({ items }) {
+  return (
+    <div>
+      {items.map(item => (
+        <DynamicReactIcon 
+          key={item.id}
+          iconName={item.iconName}
+          size={24}
+        />
+      ))}
+    </div>
+  );
 }
 
 // Usage
-<IconSelector iconName="FaGithub" />
-<IconSelector iconName="MdEmail" />
+const items = [
+  { id: 1, iconName: 'FaHome' },
+  { id: 2, iconName: 'MdSettings' },
+  { id: 3, iconName: 'AiOutlineHeart' }
+];
 ```
 
-### With TypeScript
+## 📚 TypeScript Support
 
-The component provides full type safety with autocomplete for all available icons:
+This package includes full TypeScript definitions with autocomplete for all available icons:
 
 ```tsx
 import { DynamicReactIcon, AllIconNames } from 'dynamic-react-icon';
 
-// Type-safe icon name
-const iconName: AllIconNames = "FaBeer"; // ✅ Valid
-const invalidIcon: AllIconNames = "InvalidIcon"; // ❌ TypeScript error
+// TypeScript will autocomplete all valid icon names
+const iconName: AllIconNames = 'FaBeer'; // ✅ Valid
+const invalidIcon: AllIconNames = 'InvalidIcon'; // ❌ TypeScript error
 
 function MyComponent() {
   return <DynamicReactIcon iconName={iconName} />;
 }
 ```
 
-## Props
+## 🔧 API Reference
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `iconName` | `AllIconNames` | Yes | Name of the icon (e.g., "FaBeer", "MdHome") |
-| `size` | `string \| number` | No | Icon size |
-| `color` | `string` | No | Icon color |
-| `className` | `string` | No | CSS class name |
-| `style` | `CSSProperties` | No | Inline styles |
-| ...props | `IconBaseProps` | No | Any other props from react-icons |
+### Props
 
-## Finding Icon Names
+The `DynamicReactIcon` component accepts all standard props from [react-icons](https://react-icons.github.io/react-icons/):
 
-Visit [react-icons.github.io/react-icons](https://react-icons.github.io/react-icons/) to browse and search for available icons. The icon name must include the library prefix (e.g., `Fa`, `Md`, `Ai`).
+```tsx
+interface DynamicIconProps extends IconBaseProps {
+  iconName: AllIconNames;      // Icon name (required)
+  className?: string;           // CSS class name
+  style?: React.CSSProperties;  // Inline styles
+  size?: string | number;       // Icon size
+  color?: string;               // Icon color
+  title?: string;               // Icon title
+  // ... all other react-icons props
+}
+```
 
-## Error Handling
+## 🌐 Framework-Specific Usage
+
+### Next.js App Router (13+)
+
+When using with Next.js App Router, you need to mark the component as a Client Component:
+
+```tsx
+'use client'; // Add this directive
+
+import { DynamicReactIcon } from 'dynamic-react-icon';
+
+export default function MyComponent() {
+  return <DynamicReactIcon iconName="FaReact" />;
+}
+```
+
+### Next.js Pages Router
+
+Works without any additional configuration:
+
+```tsx
+import { DynamicReactIcon } from 'dynamic-react-icon';
+
+export default function MyPage() {
+  return <DynamicReactIcon iconName="FaHome" />;
+}
+```
+
+### Vite + React
+
+```tsx
+import { DynamicReactIcon } from 'dynamic-react-icon';
+
+function App() {
+  return <DynamicReactIcon iconName="FaReact" />;
+}
+
+export default App;
+```
+
+### Create React App
+
+```tsx
+import { DynamicReactIcon } from 'dynamic-react-icon';
+
+function App() {
+  return (
+    <div className="App">
+      <DynamicReactIcon iconName="FaBeer" size={48} />
+    </div>
+  );
+}
+
+export default App;
+```
+
+## 🎯 Use Cases
+
+### From Database/API
+
+```tsx
+function ProductCard({ product }) {
+  return (
+    <div>
+      <DynamicReactIcon iconName={product.icon} size={32} />
+      <h3>{product.name}</h3>
+    </div>
+  );
+}
+```
+
+### With UI Libraries
+
+#### Material-UI
+
+```tsx
+import { IconButton } from '@mui/material';
+import { DynamicReactIcon } from 'dynamic-react-icon';
+
+<IconButton>
+  <DynamicReactIcon iconName="MdSettings" />
+</IconButton>
+```
+
+#### Chakra UI
+
+```tsx
+import { Button } from '@chakra-ui/react';
+import { DynamicReactIcon } from 'dynamic-react-icon';
+
+<Button leftIcon={<DynamicReactIcon iconName="FaPlus" />}>
+  Add Item
+</Button>
+```
+
+#### Tailwind CSS
+
+```tsx
+<DynamicReactIcon 
+  iconName="FaReact" 
+  className="text-blue-500 hover:text-blue-700" 
+  size={24}
+/>
+```
+
+## ⚠️ Important Notes
+
+### Bundle Size
+
+This package imports all supported icon libraries from react-icons, resulting in:
+- **Uncompressed**: ~9 MB
+- **Gzipped**: ~2.2 MB
+- **Brotli**: ~1.8 MB (estimated)
+
+This is necessary to enable dynamic icon rendering. If bundle size is critical for your application and you only use a specific icon library, consider importing icons directly from react-icons instead.
+
+### Error Handling
 
 The component includes built-in error handling:
-- Invalid icon names will show a console warning and return `null`
-- Unknown library prefixes will show a console warning and return `null`
-- Non-existent icons in a valid library will show a console warning and return `null`
 
-## Development
-
-### Build
-
-```bash
-npm run build
+```tsx
+// Invalid icon name
+<DynamicReactIcon iconName="InvalidIcon" />
+// Console warning: "Invalid icon: InvalidIcon..."
+// Renders: null (no error thrown)
 ```
 
-### Watch Mode
+### Server-Side Rendering
 
-```bash
-npm run dev
-```
+- ✅ **Next.js Pages Router**: Works out of the box
+- ⚠️ **Next.js App Router**: Requires `'use client'` directive
+- ✅ **Gatsby**: Works with standard React components
+- ✅ **Remix**: Works in client-side components
 
-## License
-
-MIT
-
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Author
+## 📄 License
 
-Your Name
+MIT © Dynamic React Icon Contributors
 
-## Links
+## 🔗 Links
 
-- [GitHub Repository](#)
-- [NPM Package](#)
-- [Report Issues](#)
+- [NPM Package](https://www.npmjs.com/package/dynamic-react-icon)
+- [react-icons Documentation](https://react-icons.github.io/react-icons/)
+- [GitHub Repository](https://github.com/daniel-carlos/DynamicReactIcon)
+- [Report Issues](https://github.com/daniel-carlos/DynamicReactIcon/issues)
+
+## 🙏 Acknowledgments
+
+Built on top of the excellent [react-icons](https://github.com/react-icons/react-icons) library.
+
+---
+
+Made with ❤️ for the React community
