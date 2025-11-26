@@ -1,0 +1,11 @@
+src
+node_modules
+*.log
+.git
+.gitignore
+tsconfig.json
+.vscode
+.idea
+*.md
+!README.md
+_reports
