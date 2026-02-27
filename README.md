@@ -19,38 +19,38 @@ A dynamic React component for rendering [react-icons](https://react-icons.github
 
 The component supports **30+ icon libraries** from react-icons:
 
-| Prefix | Library | Example |
-|--------|---------|---------|
-| `Fa` | Font Awesome 5 | `FaBeer`, `FaReact`, `FaGithub` |
-| `Fa6` | Font Awesome 6 | `Fa6React`, `Fa6Github` |
-| `Md` | Material Design | `MdHome`, `MdSettings`, `MdSearch` |
-| `Ai` | Ant Design | `AiOutlineUser`, `AiOutlineHeart` |
-| `Bi` | Bootstrap Icons | `BiUser`, `BiHome` |
-| `Bs` | Bootstrap Icons | `BsHeart`, `BsGithub` |
-| `Cg` | css.gg | `CgProfile`, `CgSearch` |
-| `Di` | Devicons | `DiReact`, `DiJavascript` |
-| `Fi` | Feather | `FiSettings`, `FiUser` |
-| `Fc` | Flat Color Icons | `FcLinux`, `FcAndroidOs` |
-| `Gi` | Game Icons | `GiArcher`, `GiDragonfly` |
-| `Go` | Github Octicons | `GoRepo`, `GoGist` |
-| `Gr` | Grommet Icons | `GrAdd`, `GrCircleInformation` |
-| `Hi` | Heroicons 1 | `HiHome`, `HiUser` |
-| `Hi2` | Heroicons 2 | `Hi2Home`, `Hi2User` |
-| `Im` | IcoMoon Free | `ImHome`, `ImUser` |
-| `Io` | Ionicons 5 | `IoHome`, `IoSettings` |
-| `Io4` | Ionicons 4 | `Io4IosHome`, `Io4MdHome` |
-| `Lia` | Icons8 Line Awesome | `LiaHomeSolid`, `LiaUserSolid` |
-| `Lu` | Lucide | `LuHome`, `LuUser` |
-| `Pi` | Phosphor Icons | `PiHouse`, `PiUser` |
-| `Ri` | Remix Icons | `RiHome2Line`, `RiUserLine` |
-| `Rx` | Radix Icons | `RxHome`, `RxAvatar` |
-| `Si` | Simple Icons | `SiReact`, `SiTypescript` |
-| `Sl` | Simple Line Icons | `SlHome`, `SlUser` |
-| `Tb` | Tabler Icons | `TbHome`, `TbUser` |
-| `Tfi` | Themify Icons | `TfiHome`, `TfiUser` |
-| `Ti` | Typicons | `TiHome`, `TiUser` |
-| `Vsc` | VS Code Icons | `VscHome`, `VscAccount` |
-| `Wi` | Weather Icons | `WiDaySunny`, `WiNightClear` |
+| Prefix | Library             | Example                            |
+| ------ | ------------------- | ---------------------------------- |
+| `Fa`   | Font Awesome 5      | `FaBeer`, `FaReact`, `FaGithub`    |
+| `Fa6`  | Font Awesome 6      | `Fa6React`, `Fa6Github`            |
+| `Md`   | Material Design     | `MdHome`, `MdSettings`, `MdSearch` |
+| `Ai`   | Ant Design          | `AiOutlineUser`, `AiOutlineHeart`  |
+| `Bi`   | Bootstrap Icons     | `BiUser`, `BiHome`                 |
+| `Bs`   | Bootstrap Icons     | `BsHeart`, `BsGithub`              |
+| `Cg`   | css.gg              | `CgProfile`, `CgSearch`            |
+| `Di`   | Devicons            | `DiReact`, `DiJavascript`          |
+| `Fi`   | Feather             | `FiSettings`, `FiUser`             |
+| `Fc`   | Flat Color Icons    | `FcLinux`, `FcAndroidOs`           |
+| `Gi`   | Game Icons          | `GiArcher`, `GiDragonfly`          |
+| `Go`   | Github Octicons     | `GoRepo`, `GoGist`                 |
+| `Gr`   | Grommet Icons       | `GrAdd`, `GrCircleInformation`     |
+| `Hi`   | Heroicons 1         | `HiHome`, `HiUser`                 |
+| `Hi2`  | Heroicons 2         | `Hi2Home`, `Hi2User`               |
+| `Im`   | IcoMoon Free        | `ImHome`, `ImUser`                 |
+| `Io`   | Ionicons 5          | `IoHome`, `IoSettings`             |
+| `Io4`  | Ionicons 4          | `Io4IosHome`, `Io4MdHome`          |
+| `Lia`  | Icons8 Line Awesome | `LiaHomeSolid`, `LiaUserSolid`     |
+| `Lu`   | Lucide              | `LuHome`, `LuUser`                 |
+| `Pi`   | Phosphor Icons      | `PiHouse`, `PiUser`                |
+| `Ri`   | Remix Icons         | `RiHome2Line`, `RiUserLine`        |
+| `Rx`   | Radix Icons         | `RxHome`, `RxAvatar`               |
+| `Si`   | Simple Icons        | `SiReact`, `SiTypescript`          |
+| `Sl`   | Simple Line Icons   | `SlHome`, `SlUser`                 |
+| `Tb`   | Tabler Icons        | `TbHome`, `TbUser`                 |
+| `Tfi`  | Themify Icons       | `TfiHome`, `TfiUser`               |
+| `Ti`   | Typicons            | `TiHome`, `TiUser`                 |
+| `Vsc`  | VS Code Icons       | `VscHome`, `VscAccount`            |
+| `Wi`   | Weather Icons       | `WiDaySunny`, `WiNightClear`       |
 
 [Browse all available icons →](https://react-icons.github.io/react-icons/)
 
@@ -73,7 +73,7 @@ pnpm add dynamic-react-icon react-icons
 ### Basic Usage
 
 ```tsx
-import { DynamicReactIcon } from 'dynamic-react-icon';
+import { DynamicReactIcon } from "dynamic-react-icon";
 
 function App() {
   return (
@@ -89,12 +89,12 @@ function App() {
 ### With Props
 
 ```tsx
-<DynamicReactIcon 
-  iconName="FaReact" 
+<DynamicReactIcon
+  iconName="FaReact"
   size={48}
   color="#61dafb"
   className="my-icon-class"
-  style={{ marginRight: '10px' }}
+  style={{ marginRight: "10px" }}
 />
 ```
 
@@ -102,14 +102,14 @@ function App() {
 
 ```tsx
 // If iconName doesn't exist, fallback icon will be shown
-<DynamicReactIcon 
-  iconName="FaInvalidIcon" 
+<DynamicReactIcon
+  iconName="FaInvalidIcon"
   fallback="FaBeer"
   size={24}
 />
 
 // With dynamic data
-<DynamicReactIcon 
+<DynamicReactIcon
   iconName={dynamicIconFromAPI}
   fallback="FaQuestionCircle"
   size={32}
@@ -124,10 +124,7 @@ const getIconName = (type: string): string => {
   return `Fa${type}`; // Returns 'FaBeer', 'FaHome', etc.
 };
 
-<DynamicReactIcon 
-  iconName={getIconName('Beer')}
-  fallback="FaUser"
-/>
+<DynamicReactIcon iconName={getIconName("Beer")} fallback="FaUser" />;
 ```
 
 ### Dynamic from Data
@@ -136,12 +133,8 @@ const getIconName = (type: string): string => {
 function IconList({ items }) {
   return (
     <div>
-      {items.map(item => (
-        <DynamicReactIcon 
-          key={item.id}
-          iconName={item.iconName}
-          size={24}
-        />
+      {items.map((item) => (
+        <DynamicReactIcon key={item.id} iconName={item.iconName} size={24} />
       ))}
     </div>
   );
@@ -149,9 +142,9 @@ function IconList({ items }) {
 
 // Usage
 const items = [
-  { id: 1, iconName: 'FaHome' },
-  { id: 2, iconName: 'MdSettings' },
-  { id: 3, iconName: 'AiOutlineHeart' }
+  { id: 1, iconName: "FaHome" },
+  { id: 2, iconName: "MdSettings" },
+  { id: 3, iconName: "AiOutlineHeart" },
 ];
 ```
 
@@ -160,11 +153,11 @@ const items = [
 This package includes full TypeScript definitions with autocomplete for all available icons:
 
 ```tsx
-import { DynamicReactIcon, AllIconNames } from 'dynamic-react-icon';
+import { DynamicReactIcon, AllIconNames } from "dynamic-react-icon";
 
 // TypeScript will autocomplete all valid icon names
-const iconName: AllIconNames = 'FaBeer'; // ✅ Valid
-const invalidIcon: AllIconNames = 'InvalidIcon'; // ❌ TypeScript error
+const iconName: AllIconNames = "FaBeer"; // ✅ Valid
+const invalidIcon: AllIconNames = "InvalidIcon"; // ❌ TypeScript error
 
 function MyComponent() {
   return <DynamicReactIcon iconName={iconName} />;
@@ -179,22 +172,24 @@ The `DynamicReactIcon` component accepts all standard props from [react-icons](h
 
 ```tsx
 interface DynamicIconProps extends IconBaseProps {
-  iconName: AllIconNames | string;    // Icon name (required) - accepts typed names or any string
-  fallback?: AllIconNames | string;   // Fallback icon name if primary icon is not found
-  className?: string;                  // CSS class name
-  style?: React.CSSProperties;         // Inline styles
-  size?: string | number;              // Icon size
-  color?: string;                      // Icon color
-  title?: string;                      // Icon title
+  iconName: AllIconNames | string; // Icon name (required) - accepts typed names or any string
+  fallback?: AllIconNames | string; // Fallback icon name if primary icon is not found
+  className?: string; // CSS class name
+  style?: React.CSSProperties; // Inline styles
+  size?: string | number; // Icon size
+  color?: string; // Icon color
+  title?: string; // Icon title
   // ... all other react-icons props
 }
 ```
 
 #### `iconName` (required)
+
 - **Type**: `AllIconNames | string`
 - **Description**: The name of the icon to render. Can be a typed icon name for autocomplete or any string for dynamic usage.
 
 #### `fallback` (optional)
+
 - **Type**: `AllIconNames | string`
 - **Description**: A fallback icon name to display if the primary `iconName` is not found.
 
@@ -205,9 +200,9 @@ interface DynamicIconProps extends IconBaseProps {
 When using with Next.js App Router, you need to mark the component as a Client Component:
 
 ```tsx
-'use client'; // Add this directive
+"use client"; // Add this directive
 
-import { DynamicReactIcon } from 'dynamic-react-icon';
+import { DynamicReactIcon } from "dynamic-react-icon";
 
 export default function MyComponent() {
   return <DynamicReactIcon iconName="FaReact" />;
@@ -219,7 +214,7 @@ export default function MyComponent() {
 Works without any additional configuration:
 
 ```tsx
-import { DynamicReactIcon } from 'dynamic-react-icon';
+import { DynamicReactIcon } from "dynamic-react-icon";
 
 export default function MyPage() {
   return <DynamicReactIcon iconName="FaHome" />;
@@ -229,7 +224,7 @@ export default function MyPage() {
 ### Vite + React
 
 ```tsx
-import { DynamicReactIcon } from 'dynamic-react-icon';
+import { DynamicReactIcon } from "dynamic-react-icon";
 
 function App() {
   return <DynamicReactIcon iconName="FaReact" />;
@@ -241,7 +236,7 @@ export default App;
 ### Create React App
 
 ```tsx
-import { DynamicReactIcon } from 'dynamic-react-icon';
+import { DynamicReactIcon } from "dynamic-react-icon";
 
 function App() {
   return (
@@ -274,31 +269,29 @@ function ProductCard({ product }) {
 #### Material-UI
 
 ```tsx
-import { IconButton } from '@mui/material';
-import { DynamicReactIcon } from 'dynamic-react-icon';
+import { IconButton } from "@mui/material";
+import { DynamicReactIcon } from "dynamic-react-icon";
 
 <IconButton>
   <DynamicReactIcon iconName="MdSettings" />
-</IconButton>
+</IconButton>;
 ```
 
 #### Chakra UI
 
 ```tsx
-import { Button } from '@chakra-ui/react';
-import { DynamicReactIcon } from 'dynamic-react-icon';
+import { Button } from "@chakra-ui/react";
+import { DynamicReactIcon } from "dynamic-react-icon";
 
-<Button leftIcon={<DynamicReactIcon iconName="FaPlus" />}>
-  Add Item
-</Button>
+<Button leftIcon={<DynamicReactIcon iconName="FaPlus" />}>Add Item</Button>;
 ```
 
 #### Tailwind CSS
 
 ```tsx
-<DynamicReactIcon 
-  iconName="FaReact" 
-  className="text-blue-500 hover:text-blue-700" 
+<DynamicReactIcon
+  iconName="FaReact"
+  className="text-blue-500 hover:text-blue-700"
   size={24}
 />
 ```
@@ -308,6 +301,7 @@ import { DynamicReactIcon } from 'dynamic-react-icon';
 ### Bundle Size
 
 This package imports all supported icon libraries from react-icons, resulting in:
+
 - **Uncompressed**: ~9 MB
 - **Gzipped**: ~2.2 MB
 - **Brotli**: ~1.8 MB (estimated)
@@ -325,16 +319,16 @@ The component includes built-in error handling:
 // Renders: null (no error thrown)
 
 // Invalid icon name with fallback
-<DynamicReactIcon 
-  iconName="InvalidIcon" 
+<DynamicReactIcon
+  iconName="InvalidIcon"
   fallback="FaQuestionCircle"
 />
 // Falls back to FaQuestionCircle
 // Renders: <FaQuestionCircle />
 
 // If even the fallback is invalid
-<DynamicReactIcon 
-  iconName="InvalidIcon" 
+<DynamicReactIcon
+  iconName="InvalidIcon"
   fallback="AlsoInvalid"
 />
 // Console warning: "Fallback icon not found: AlsoInvalid"

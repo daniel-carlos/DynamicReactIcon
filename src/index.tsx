@@ -82,6 +82,8 @@ interface DynamicIconProps extends IconBaseProps {
 }
 
 const getIconComponent = (iconName: string): IconType | null => {
+    if (!iconName) return null;
+    
     const iconStr = iconName as string;
     
     // Try to match 3-character prefix first (e.g., "Hi2", "Fa6", "Io4", "Mdc", "Lia", "Tfi")
@@ -107,9 +109,14 @@ const getIconComponent = (iconName: string): IconType | null => {
         return null;
     }
     
-    const IconComponent = library[iconName as keyof typeof library] as IconType;
+    const IconComponent = library[iconName as keyof typeof library] as IconType | undefined;
     
-    return IconComponent || null;
+    // Explicitly check if IconComponent exists and is a valid function
+    if (!IconComponent || typeof IconComponent !== 'function') {
+        return null;
+    }
+    
+    return IconComponent;
 };
 
 export const DynamicReactIcon = ({ iconName, className, style, fallback, ...props }: DynamicIconProps) => {
