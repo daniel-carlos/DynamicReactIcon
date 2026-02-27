@@ -75,13 +75,13 @@ export type AllIconNames = {
 }[keyof IconLibraries];
 
 interface DynamicIconProps extends IconBaseProps {
-    iconName: AllIconNames;
+    iconName: AllIconNames | string;
     className?: React.HTMLAttributes<HTMLDivElement>["className"];
     style?: React.CSSProperties;
+    fallback?: AllIconNames;
 }
 
-export const DynamicReactIcon = ({ iconName, className, style, ...props }: DynamicIconProps) => {
-    // Extract the icon name prefix (e.g.: "Fa" from "FaBeer", "Hi2" from "Hi2Home")
+const getIconComponent = (iconName: string): IconType | null => {
     const iconStr = iconName as string;
     
     // Try to match 3-character prefix first (e.g., "Hi2", "Fa6", "Io4", "Mdc", "Lia", "Tfi")
@@ -98,25 +98,38 @@ export const DynamicReactIcon = ({ iconName, className, style, ...props }: Dynam
     }
     
     if (!prefix) {
-        console.warn(`Invalid icon: ${iconName}. The name must follow the prefix pattern (e.g.: FaBeer, MdHome, Hi2Home)`);
         return null;
     }
     
     const library = iconLibraries[prefix];
     
     if (!library) {
-        console.warn(`Library not found for prefix: ${prefix}`);
         return null;
     }
     
     const IconComponent = library[iconName as keyof typeof library] as IconType;
     
-    if (!IconComponent) {
-        console.warn(`Icon not found: ${iconName} in library ${prefix}`);
-        return null;
+    return IconComponent || null;
+};
+
+export const DynamicReactIcon = ({ iconName, className, style, fallback, ...props }: DynamicIconProps) => {
+    const IconComponent = getIconComponent(iconName as string);
+    
+    if (IconComponent) {
+        return <IconComponent className={`${className}`} style={style} {...props} />;
     }
     
-    return <IconComponent className={`${className}`} style={style} {...props} />;
+    // If icon not found and fallback is provided, try to render fallback icon
+    if (fallback) {
+        const FallbackIconComponent = getIconComponent(fallback as string);
+        if (FallbackIconComponent) {
+            return <FallbackIconComponent className={`${className}`} style={style} {...props} />;
+        }
+        console.warn(`Fallback icon not found: ${fallback}`);
+    }
+    
+    console.warn(`Icon not found: ${iconName}. The name must follow the prefix pattern (e.g.: FaBeer, MdHome, Hi2Home)`);
+    return null;
 };
 
 // Usage:

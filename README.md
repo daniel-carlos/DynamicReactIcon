@@ -9,9 +9,10 @@ A dynamic React component for rendering [react-icons](https://react-icons.github
 
 - 🎯 **Type-Safe**: Full TypeScript support with autocomplete for all icon names
 - 🔄 **Dynamic Rendering**: Render icons based on string values
-- 📦 **Multiple Icon Libraries**: Supports 8+ icon libraries from react-icons
+- 📦 **Multiple Icon Libraries**: Supports 30+ icon libraries from react-icons
 - 🎨 **Fully Customizable**: All react-icons props supported (size, color, className, etc.)
-- 🛡️ **Error Handling**: Graceful fallback for invalid icon names
+- 🛡️ **Error Handling**: Graceful fallback with configurable fallback icons
+- 🔗 **Generic String Support**: Pass any string as icon name (with fallback support)
 - ⚛️ **React 16.8+**: Compatible with React 16.8, 17, 18, and 19
 
 ## 🎨 Supported Icon Libraries
@@ -97,6 +98,38 @@ function App() {
 />
 ```
 
+### With Fallback Icon
+
+```tsx
+// If iconName doesn't exist, fallback icon will be shown
+<DynamicReactIcon 
+  iconName="FaInvalidIcon" 
+  fallback="FaBeer"
+  size={24}
+/>
+
+// With dynamic data
+<DynamicReactIcon 
+  iconName={dynamicIconFromAPI}
+  fallback="FaQuestionCircle"
+  size={32}
+/>
+```
+
+### With Generic Strings
+
+```tsx
+// Now you can pass any string as iconName
+const getIconName = (type: string): string => {
+  return `Fa${type}`; // Returns 'FaBeer', 'FaHome', etc.
+};
+
+<DynamicReactIcon 
+  iconName={getIconName('Beer')}
+  fallback="FaUser"
+/>
+```
+
 ### Dynamic from Data
 
 ```tsx
@@ -146,15 +179,24 @@ The `DynamicReactIcon` component accepts all standard props from [react-icons](h
 
 ```tsx
 interface DynamicIconProps extends IconBaseProps {
-  iconName: AllIconNames;      // Icon name (required)
-  className?: string;           // CSS class name
-  style?: React.CSSProperties;  // Inline styles
-  size?: string | number;       // Icon size
-  color?: string;               // Icon color
-  title?: string;               // Icon title
+  iconName: AllIconNames | string;    // Icon name (required) - accepts typed names or any string
+  fallback?: AllIconNames | string;   // Fallback icon name if primary icon is not found
+  className?: string;                  // CSS class name
+  style?: React.CSSProperties;         // Inline styles
+  size?: string | number;              // Icon size
+  color?: string;                      // Icon color
+  title?: string;                      // Icon title
   // ... all other react-icons props
 }
 ```
+
+#### `iconName` (required)
+- **Type**: `AllIconNames | string`
+- **Description**: The name of the icon to render. Can be a typed icon name for autocomplete or any string for dynamic usage.
+
+#### `fallback` (optional)
+- **Type**: `AllIconNames | string`
+- **Description**: A fallback icon name to display if the primary `iconName` is not found.
 
 ## 🌐 Framework-Specific Usage
 
@@ -277,9 +319,25 @@ This is necessary to enable dynamic icon rendering. If bundle size is critical f
 The component includes built-in error handling:
 
 ```tsx
-// Invalid icon name
+// Invalid icon name without fallback
 <DynamicReactIcon iconName="InvalidIcon" />
-// Console warning: "Invalid icon: InvalidIcon..."
+// Console warning: "Icon not found: InvalidIcon..."
+// Renders: null (no error thrown)
+
+// Invalid icon name with fallback
+<DynamicReactIcon 
+  iconName="InvalidIcon" 
+  fallback="FaQuestionCircle"
+/>
+// Falls back to FaQuestionCircle
+// Renders: <FaQuestionCircle />
+
+// If even the fallback is invalid
+<DynamicReactIcon 
+  iconName="InvalidIcon" 
+  fallback="AlsoInvalid"
+/>
+// Console warning: "Fallback icon not found: AlsoInvalid"
 // Renders: null (no error thrown)
 ```
 
